@@ -1,0 +1,18 @@
+{
+  "name": "dbpAPP",
+  "private": true,
+  "version": "0.0.0",
+  "description": "DBP starter project for AngularJS",
+  "repository": "",
+  "license": "MIT",
+  "scripts": {
+    "install": "napa"
+  },
+  "napa": {
+    "angular": "angular/bower-angular",
+    "angular-route": "angular/bower-angular-route"
+  },
+  "devDependencies": {
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}

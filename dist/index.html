@@ -1,0 +1,26 @@
+<!doctype html>
+<!-- Specify the AngularJS app to use -->
+<html lang="en" ng-app="dbpAPP">
+<head>
+  <meta charset="utf-8">
+  <title>DBP AngularJS App</title>
+  <!-- The css is copied into dist/css/app.css by the copy task -->
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body >
+
+  <ul class="menu">
+    <li><a href="#/view1">view1</a></li>
+    <li><a href="#/view2">view2</a></li>
+    <li><a href="#/view3">view3</a></li>
+    <li><a href="#/view4">view4</a></li>
+  </ul>
+
+ <!--  <div ng-controller="SettingsController1 as settings">some expression {{name}} !</div> -->
+  <!-- A simple AngularJS view -->
+  <div ng-view></div>
+
+  <!-- This script will be bundled by the browserify task into dist/js/app.js -->
+  <script src="js/app.js"></script>
+</body>
+</html>
