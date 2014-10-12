@@ -75,21 +75,28 @@ exports.controller = function NavController($scope, $http) {
 
   $http.get('data/nav.json').success(function(data) {
       $scope.navitems = data;
-      $scope.img = data[0].imageUrl;
+      $scope.img = $scope.navitems[0].imageUrl;
   });
 
+
+   // Public function
+  $scope.hitFunc = function(action) {
+      var imgnum = action-1;
+      $scope.img = $scope.navitems[imgnum].imageUrl;
+      console.log( "img is ", $scope.img);
+  }
 
   // Event listeners :::::::::::::::::::::::::::::::::
   // Listens for view Destory / change
   $scope.$on("$destroy", function() { 
        $scope.cleanView();
-       console.log("destroy...");
+       console.log("outer destroy...");
   });
 
   // Clean all listeners on the view :::::::::::::::::::
   $scope.cleanView = function(){
   	//$interval.cancel( intervalPromise );
-  	console.log("view 1 cleaned");
+  	console.log("outer view cleaned");
   }
 
 };

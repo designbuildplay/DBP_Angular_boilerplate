@@ -12,13 +12,12 @@
   <div ng-controller="NavController">
     {{ name }}
     <ul class="menu" >
-      <li ng-repeat="navitem in navitems" ><a href="#/{{ navitem.link }}"> {{ navitem.name }} </a></li>
+      <li ng-repeat="navitem in navitems" ><a href="#/{{ navitem.link }}" ng-click="hitFunc( navitem.id )"> {{ navitem.name }} </a></li>
     </ul> 
-  </div>
-  
-  <div ng-controller="NavController">
+
     <img ng-src="{{ img }}" />
   </div>
+  
 
  <!--  <div ng-controller="SettingsController1 as settings">some expression {{name}} !</div> -->
   <!-- A simple AngularJS view -->

@@ -9,21 +9,21 @@
     {
         "id": 2, 
         "link": "view2", 
-        "imageUrl": "", 
+        "imageUrl": "img/342sw003300.gif", 
         "name": "View 2", 
         "snippet": ""
     }, 
     {
         "id": 3, 
         "link": "view3", 
-        "imageUrl": "", 
+        "imageUrl": "img/Funny-GIF-29.gif", 
         "name": "View 3", 
         "snippet": "Yes bruv"
     }, 
     {
         "id": 4, 
         "link": "view4", 
-        "imageUrl": "", 
+        "imageUrl": "img/funny-gif-dinosaur-eats-cheerleader.gif", 
         "name": "View 4", 
         "snippet": ""
     }
