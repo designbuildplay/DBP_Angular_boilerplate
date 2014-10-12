@@ -6,11 +6,11 @@ exports.inject = function(app) {
   return exports.controller;
 };
 
-exports.controller = function View1ctrl($scope, $interval) {
+exports.controller = function View1ctrl($scope, ) {
   
   $scope.regularAngular = 'Hello!';
-  $scope.name = 'Charlie123pal';
-  $scope.monkey = 'Strawberry';
+  $scope.name = 'View 1';
+  $scope.monkey = '';
 
   // Event listeners :::::::::::::::::::::::::::::::::
   // Listens for view Destory / change
@@ -19,10 +19,6 @@ exports.controller = function View1ctrl($scope, $interval) {
        console.log("destroy...");
   });
 
-  var intervalPromise = $interval(function () { myTimer() }, 500);  // Angular interval
-  var myTimer = function(action) {
-	    console.log("angular private tick")
-  }
     
   // Public function
   $scope.hitFunc = function(action) {
@@ -32,7 +28,7 @@ exports.controller = function View1ctrl($scope, $interval) {
   // Clean all listeners on the view :::::::::::::::::::
   $scope.cleanView = function(){
   	$interval.cancel( intervalPromise );
-  	console.log("view cleaned");
+  	console.log("view 1 cleaned");
   }
 
 };

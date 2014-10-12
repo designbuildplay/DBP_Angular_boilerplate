@@ -3,19 +3,19 @@
 // and give us access to the `angular` global object.
 require('angular/angular');
 require('angular-route/angular-route');
-// require('./controllers/HelloController');
+
 
 // Create the app
 var app = angular.module('dbpAPP', ['ngRoute']).config(['$routeProvider', function($routeProvider) {
 	  // Specify routes to load our partials upon the given URLs
-	  $routeProvider.when('/view1', {templateUrl: 'partials/view1.html',  controller: require('./controllers/AboutCtrl').inject(app), });
-	  $routeProvider.when('/view2', {templateUrl: 'partials/view2.html'});
-	  $routeProvider.when('/view3', {templateUrl: 'partials/view3.html'});
-	  $routeProvider.when('/view4', {templateUrl: 'partials/view4.html'});
+	  $routeProvider.when('/view1', {templateUrl: 'partials/view1.html',  controller: require('./controllers/View1ctrl').inject(app), });
+	  $routeProvider.when('/view2', {templateUrl: 'partials/view2.html',  controller: require('./controllers/View1ctrl').inject(app) });
+	  $routeProvider.when('/view3', {templateUrl: 'partials/view3.html',  controller: require('./controllers/View1ctrl').inject(app) });
+	  $routeProvider.when('/view4', {templateUrl: 'partials/view4.html',  controller: require('./controllers/View1ctrl').inject(app) });
 
 	  $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
-},{"./controllers/AboutCtrl":2,"angular-route/angular-route":3,"angular/angular":4}],2:[function(require,module,exports){
+},{"./controllers/View1ctrl":2,"angular-route/angular-route":3,"angular/angular":4}],2:[function(require,module,exports){
 // Exports Controller ::::::::::::::::::::::::::::::::
 // :::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -24,7 +24,7 @@ exports.inject = function(app) {
   return exports.controller;
 };
 
-exports.controller = function AboutCtrl($scope, $interval) {
+exports.controller = function View1ctrl($scope, $interval) {
   
   $scope.regularAngular = 'Hello!';
   $scope.name = 'Charlie123pal';
@@ -38,7 +38,6 @@ exports.controller = function AboutCtrl($scope, $interval) {
   });
 
   var intervalPromise = $interval(function () { myTimer() }, 500);  // Angular interval
-
   var myTimer = function(action) {
 	    console.log("angular private tick")
   }
@@ -48,7 +47,7 @@ exports.controller = function AboutCtrl($scope, $interval) {
     	console.log("returning.. ", $scope.monkey + " " + action);
   }
 
-  // Clean all listeners on the view ::::::::::::::::::::::::
+  // Clean all listeners on the view :::::::::::::::::::
   $scope.cleanView = function(){
   	$interval.cancel( intervalPromise );
   	console.log("view cleaned");
