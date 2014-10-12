@@ -9,12 +9,16 @@
 </head>
 <body >
 
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-    <li><a href="#/view3">view3</a></li>
-    <li><a href="#/view4">view4</a></li>
-  </ul>
+  <div ng-controller="NavController">
+    {{ name }}
+    <ul class="menu" >
+      <li ng-repeat="navitem in navitems" ><a href="#/{{ navitem.link }}"> {{ navitem.name }} </a></li>
+    </ul> 
+  </div>
+  
+  <div ng-controller="NavController">
+    <img ng-src="{{ img }}" />
+  </div>
 
  <!--  <div ng-controller="SettingsController1 as settings">some expression {{name}} !</div> -->
   <!-- A simple AngularJS view -->

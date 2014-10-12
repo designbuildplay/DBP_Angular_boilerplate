@@ -3,17 +3,22 @@
 // :::::::::::::::::::::::::::::::::::::::::::::::::::
 
 exports.inject = function(app) {
-  app.controller('AboutCtrl', exports.controller);
+  app.controller('NavController', exports.controller);
   return exports.controller;
 };
 
 // :::::::::::::::::::::::::::::::::::::::::::::::::::
 
-exports.controller = function View1ctrl($scope) {
+exports.controller = function NavController($scope, $http) {
   
-  $scope.regularAngular = 'Hello!';
-  $scope.name = 'View 1';
-  $scope.monkey = '';
+  $scope.welcome = 'Yo!';
+  $scope.name = 'Nav controller';
+
+  $http.get('data/nav.json').success(function(data) {
+      $scope.navitems = data;
+      $scope.img = data[0].imageUrl;
+  });
+
 
   // Event listeners :::::::::::::::::::::::::::::::::
   // Listens for view Destory / change
@@ -22,14 +27,9 @@ exports.controller = function View1ctrl($scope) {
        console.log("destroy...");
   });
 
-    
-  // Public function
-  $scope.hitFunc = function(action) {
-    	console.log("returning.. ", $scope.monkey + " " + action);
-  }
-
   // Clean all listeners on the view :::::::::::::::::::
   $scope.cleanView = function(){
+  	//$interval.cancel( intervalPromise );
   	console.log("view 1 cleaned");
   }
 

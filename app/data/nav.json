@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1, 
+        "link": "view1", 
+        "imageUrl": "img/banana.gif", 
+        "name": "View 1", 
+        "snippet": "some long description. well hello"
+    }, 
+    {
+        "id": 2, 
+        "link": "view2", 
+        "imageUrl": "", 
+        "name": "View 2", 
+        "snippet": ""
+    }, 
+    {
+        "id": 3, 
+        "link": "view3", 
+        "imageUrl": "", 
+        "name": "View 3", 
+        "snippet": "Yes bruv"
+    }, 
+    {
+        "id": 4, 
+        "link": "view4", 
+        "imageUrl": "", 
+        "name": "View 4", 
+        "snippet": ""
+    }
+]

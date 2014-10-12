@@ -4,7 +4,6 @@
 require('angular/angular');
 require('angular-route/angular-route');
 
-
 // Create the app
 var app = angular.module('dbpAPP', ['ngRoute']).config(['$routeProvider', function($routeProvider) {
 	  // Specify routes to load our partials upon the given URLs
@@ -12,10 +11,15 @@ var app = angular.module('dbpAPP', ['ngRoute']).config(['$routeProvider', functi
 	  $routeProvider.when('/view2', {templateUrl: 'partials/view2.html',  controller: require('./controllers/View1ctrl').inject(app) });
 	  $routeProvider.when('/view3', {templateUrl: 'partials/view3.html',  controller: require('./controllers/View1ctrl').inject(app) });
 	  $routeProvider.when('/view4', {templateUrl: 'partials/view4.html',  controller: require('./controllers/View1ctrl').inject(app) });
-
+	  // default route
 	  $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
-},{"./controllers/View1ctrl":2,"angular-route/angular-route":3,"angular/angular":4}],2:[function(require,module,exports){
+
+// Outter view controller
+app.controller( require('./controllers/nav').inject(app) );
+
+},{"./controllers/View1ctrl":2,"./controllers/nav":3,"angular-route/angular-route":4,"angular/angular":5}],2:[function(require,module,exports){
+// :::::::::::::::::::::::::::::::::::::::::::::::::::
 // Exports Controller ::::::::::::::::::::::::::::::::
 // :::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -24,11 +28,13 @@ exports.inject = function(app) {
   return exports.controller;
 };
 
-exports.controller = function View1ctrl($scope, $interval) {
+// :::::::::::::::::::::::::::::::::::::::::::::::::::
+
+exports.controller = function View1ctrl($scope) {
   
   $scope.regularAngular = 'Hello!';
-  $scope.name = 'Charlie123pal';
-  $scope.monkey = 'Strawberry';
+  $scope.name = 'View 1';
+  $scope.monkey = '';
 
   // Event listeners :::::::::::::::::::::::::::::::::
   // Listens for view Destory / change
@@ -37,10 +43,6 @@ exports.controller = function View1ctrl($scope, $interval) {
        console.log("destroy...");
   });
 
-  var intervalPromise = $interval(function () { myTimer() }, 500);  // Angular interval
-  var myTimer = function(action) {
-	    console.log("angular private tick")
-  }
     
   // Public function
   $scope.hitFunc = function(action) {
@@ -49,13 +51,50 @@ exports.controller = function View1ctrl($scope, $interval) {
 
   // Clean all listeners on the view :::::::::::::::::::
   $scope.cleanView = function(){
-  	$interval.cancel( intervalPromise );
-  	console.log("view cleaned");
+  	console.log("view 1 cleaned");
   }
 
 };
 
 },{}],3:[function(require,module,exports){
+// :::::::::::::::::::::::::::::::::::::::::::::::::::
+// Exports Controller ::::::::::::::::::::::::::::::::
+// :::::::::::::::::::::::::::::::::::::::::::::::::::
+
+exports.inject = function(app) {
+  app.controller('NavController', exports.controller);
+  return exports.controller;
+};
+
+// :::::::::::::::::::::::::::::::::::::::::::::::::::
+
+exports.controller = function NavController($scope, $http) {
+  
+  $scope.welcome = 'Yo!';
+  $scope.name = 'Nav controller';
+
+  $http.get('data/nav.json').success(function(data) {
+      $scope.navitems = data;
+      $scope.img = data[0].imageUrl;
+  });
+
+
+  // Event listeners :::::::::::::::::::::::::::::::::
+  // Listens for view Destory / change
+  $scope.$on("$destroy", function() { 
+       $scope.cleanView();
+       console.log("destroy...");
+  });
+
+  // Clean all listeners on the view :::::::::::::::::::
+  $scope.cleanView = function(){
+  	//$interval.cancel( intervalPromise );
+  	console.log("view 1 cleaned");
+  }
+
+};
+
+},{}],4:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.0-build.3362+sha.6fd36de
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -1010,7 +1049,7 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.0-build.3362+sha.6fd36de
  * (c) 2010-2014 Google, Inc. http://angularjs.org

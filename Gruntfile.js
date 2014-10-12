@@ -13,10 +13,12 @@ module.exports = function(grunt) {
         // This copies all the html and css into the dist/ folder
         expand: true,
         cwd: 'app/',
-        src: ['**/*.html', '**/*.css'],
+        src: ['**/*.html', '**/*.css', '**/*.png', '**/*.gif', '**/*.json'],
         dest: 'dist/',
       },
     },
+
+
   });
 
   // Load the npm installed tasks
@@ -30,4 +32,6 @@ module.exports = function(grunt) {
   // // The default tasks to run when you type: grunt
   // //grunt.registerTask('run', ['watch']);
   grunt.registerTask('default', ['browserify', 'copy']);
+
+
 };
