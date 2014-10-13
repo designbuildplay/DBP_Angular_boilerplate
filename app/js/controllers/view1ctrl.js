@@ -1,4 +1,3 @@
-// :::::::::::::::::::::::::::::::::::::::::::::::::::
 // Exports Controller ::::::::::::::::::::::::::::::::
 // :::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -7,14 +6,14 @@ exports.inject = function(app) {
   return exports.controller;
 };
 
-// :::::::::::::::::::::::::::::::::::::::::::::::::::
-
-exports.controller = function View1ctrl($scope) {
+exports.controller = function ControlExample($scope, $interval, $http) {
   
   $scope.regularAngular = 'Hello!';
-  $scope.name = 'View 1';
-  $scope.monkey = '';
-
+  $scope.name = 'Charlie123pal';
+  $scope.monkey = 'Strawberry';
+  $scope.ticker = 0;
+  $scope.tickerTime = 500;
+  
   // Event listeners :::::::::::::::::::::::::::::::::
   // Listens for view Destory / change
   $scope.$on("$destroy", function() { 
@@ -22,15 +21,31 @@ exports.controller = function View1ctrl($scope) {
        console.log("destroy...");
   });
 
-    
-  // Public function
-  $scope.hitFunc = function(action) {
-    	console.log("returning.. ", $scope.monkey + " " + action);
-  }
+  $http.get('data/nav.json').success(function(data) {
+      $scope.navitems = data;
+      $scope.img = $scope.navitems[0].imageUrl;
+  });
 
-  // Clean all listeners on the view :::::::::::::::::::
+
+  // Angular timer
+  var intervalPromise = $interval(function () { myTimer() }, $scope.tickerTime);  // Angular interval
+  var myTimer = function(action) {
+      $scope.ticker = $scope.ticker + 1;
+	    console.log("angular private tick");
+  };
+    
+  // Public functions :::::::::::::::::::::::::::::::::::
+  $scope.hitFunc = function(action) {
+    console.log("returning.. ", $scope.monkey + " " + action);
+    // Effect the ticker counter
+    if(action == 'over')$scope.ticker = $scope.ticker + 10;
+      else $scope.ticker = $scope.ticker * 2;
+  };
+
+  // Clean all listeners on the view :::::::::::::::::::::
   $scope.cleanView = function(){
-  	console.log("view 1 cleaned");
-  }
+  	$interval.cancel( intervalPromise );
+  	console.log("view cleaned");
+  };
 
 };

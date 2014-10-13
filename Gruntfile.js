@@ -18,6 +18,16 @@ module.exports = function(grunt) {
       },
     },
 
+  //watch -------------------- /
+     watch: {
+        scripts: {
+          files: '**/*.js',
+          tasks: ['jshint', 'browserify' ],
+          options: {
+           // debounceDelay: 250,
+          },
+        },
+      },
 
   });
 
