@@ -1,5 +1,4 @@
-DBP_Angular_boilerplate
-=======================
-
-# AngularJS / Browserify / Grunt project base template
-basic project setup and test of AngularJS features
+# AngularJS / Browserify / GULP project base template
+Basic project setup and test of AngularJS features.
+Uses GULP to build.
+Compass for styling.

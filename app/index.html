@@ -10,7 +10,7 @@
 <body >
 
   <div ng-controller="NavController">
-    {{ name }}
+    Nav name: {{ name }}
     <ul class="menu" >
       <li ng-repeat="navitem in navitems" ><a href="#/{{ navitem.link }}" ng-click="hitFunc( navitem.id )"> {{ navitem.name }} </a></li>
     </ul> 
