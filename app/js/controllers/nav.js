@@ -1,6 +1,7 @@
 // :::::::::::::::::::::::::::::::::::::::::::::::::::
 // Exports Controller ::::::::::::::::::::::::::::::::
 // :::::::::::::::::::::::::::::::::::::::::::::::::::
+// require('gsap');
 
 exports.inject = function(app) {
   app.controller('NavController', exports.controller);
@@ -13,6 +14,8 @@ exports.controller = function NavController($scope, $http) {
   
   $scope.welcome = 'Yo!';
   $scope.name = 'Nav controller';
+
+  //TweenLite.to('#navimg', 1.5, {width:500});
 
   $http.get('data/nav.json').success(function(data) {
       $scope.navitems = data;

@@ -1,6 +1,7 @@
 // :::::::::::::::::::::::::::::::::::::::::::::::::::
 // Exports Controller ::::::::::::::::::::::::::::::::
 // :::::::::::::::::::::::::::::::::::::::::::::::::::
+require('gsap');
 
 exports.inject = function(app) {
   app.controller('AboutCtrl', exports.controller);
@@ -14,6 +15,8 @@ exports.controller = function View1ctrl($scope) {
   $scope.regularAngular = 'Hello!';
   $scope.name = 'View 1';
   $scope.monkey = '';
+
+  TweenLite.to('#navimg', 1.5, {width:200});
 
   // Event listeners :::::::::::::::::::::::::::::::::
   // Listens for view Destory / change
