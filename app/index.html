@@ -12,7 +12,7 @@
   <div ng-controller="NavController">
     Nav name: {{ name }}
     <ul class="menu" >
-      <li ng-repeat="navitem in navitems" ><a href="#/{{ navitem.link }}" ng-click="hitFunc( navitem.id )"> {{ navitem.name }} </a></li>
+      <li ng-repeat="navitem in navitems" class="items"><a href="#/{{ navitem.link }}" ng-click="hitFunc( navitem.id )"> {{ navitem.name }} </a></li>
     </ul> 
 
     <img id="navimg" ng-src="{{ img }}" />

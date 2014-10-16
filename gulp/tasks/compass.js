@@ -9,9 +9,9 @@ gulp.task('compass', function() {
   gulp.src(config.src)
   .pipe(compass({
 	config_file: './config.rb',
-    css: './www/css',
+    css: './static/css',
     sass: 'app/scss',
-    image: './www/imgs'
+    image: './static/imgs'
   }))
   //.pipe(minifyCSS())
   .pipe(gulp.dest(config.dest));

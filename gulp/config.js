@@ -1,4 +1,4 @@
-var dest = "./www";
+var dest = "./static";
 var src = './app';
 
 module.exports = {
