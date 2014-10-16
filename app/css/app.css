@@ -1,0 +1,46 @@
+/* app css stylesheet */
+/* line 2, ../../src/scss/app.scss */
+body {
+  font-family: helvetica;
+}
+
+/* line 5, ../../src/scss/app.scss */
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+/* line 12, ../../src/scss/app.scss */
+.menu:before {
+  content: "[";
+}
+
+/* line 16, ../../src/scss/app.scss */
+.menu:after {
+  content: "]";
+}
+
+/* line 20, ../../src/scss/app.scss */
+.menu > li {
+  display: inline;
+}
+
+/* line 24, ../../src/scss/app.scss */
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+/* line 29, ../../src/scss/app.scss */
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+/* line 34, ../../src/scss/app.scss */
+.hit {
+  cursor: pointer;
+  color: red;
+}
