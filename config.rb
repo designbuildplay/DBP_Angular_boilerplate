@@ -1,9 +1,9 @@
 # Compass Config
 preferred_syntax = :sass
 http_path = '/'
-css_dir = 'www/css'
+css_dir = 'static/css'
 sass_dir = 'app/scss'
-images_dir = 'www/img'
-fonts_dir = 'www/fonts'
+images_dir = 'static/imgs'
+fonts_dir = 'static/fonts'
 relative_assets = true
 line_comments = true

@@ -10,5 +10,5 @@ Basic project setup for interactive AngularJS based application.
 * BrowserSnyc live refresh
 * Uses GULP to build
 * Compass for styling
-* THREEJS canvas
 * GSAP Animation
+* Protractor & Karma test environments running on Jasmine
