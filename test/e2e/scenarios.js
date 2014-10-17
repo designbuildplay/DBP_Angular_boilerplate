@@ -1,10 +1,13 @@
 'use strict';
 
 /* http://docs.angularjs.org/guide/dev_guide.e2e-testing */
+var ptor;
 
 describe('DbpAPP App', function() {
 
 describe('Nav list view', function() {
+
+ptor = protractor.getInstance();
 
   beforeEach(function() {
     browser.get('static/');
@@ -22,11 +25,13 @@ describe('Nav list view', function() {
 
   it('should click each nav item and render the appropriate view', function() {
       var query = element(by.model('navitem in navitems'));
-      
+      //expect(query.count()).toBe(4);
+
       // SINGLE LINK CLICK TEST
-      //element(by.css('.menu li a')).click();
+      // element(by.css('.menu li a')).click();
       // browser.getLocationAbsUrl().then(function(url) {
-      //   expect(url.split('#')[1]).toBe('/view1');
+      //   //expect(url.split('#')[1]).toBe('/view1');
+      //   expect(ptor.getCurrentUrl()).toContain('view1');
       // });
 
 
@@ -36,9 +41,10 @@ describe('Nav list view', function() {
             items.forEach(function (ele, i) { // loop through array
                 ele.click();
 
-                browser.getLocationAbsUrl().then(function(url) {
-                  expect(url.split('#')[1]).toBe('/view'+(i+1));
-                });
+                expect( ptor.getCurrentUrl() ).toContain( '/view'+(i+1) );
+                // browser.getLocationAbsUrl().then(function(url) {
+                //   expect(url.split('#')[1]).toBe('/view'+(i+1));
+                // });
             
             });
         });

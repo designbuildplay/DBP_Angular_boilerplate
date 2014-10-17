@@ -1,9 +1,12 @@
 'use strict';
 
+// var app = require('../app/js/app');
+// require('../app/js/app');
+
 /* jasmine specs for controllers go here */
 describe('DbpAPP controllers', function() {
 
-  describe('NavController', function(){
+  describe('Nav Controller', function(){
 
     beforeEach(module('dbpApp'));
 
